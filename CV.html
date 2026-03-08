@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CV – Garbhit Naik</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --accent:#2E6E8E;--accent-light:#E8F4F8;--dark:#1A2332;--mid:#4A5568;
+    --light:#F7FAFC;--border:#CBD5E0;--tag-bg:#EBF4FF;--tag-text:#2B6CB0;
+  }
+  body{font-family:'Inter',sans-serif;background:#e8ecf0;min-height:100vh;padding:24px;color:var(--dark)}
+  .page{max-width:960px;margin:0 auto;background:#fff;box-shadow:0 4px 32px rgba(0,0,0,.12);display:grid;grid-template-columns:280px 1fr;min-height:1100px}
+
+  /* SIDEBAR */
+  .sidebar{background:var(--dark);color:#fff;padding:32px 24px;display:flex;flex-direction:column;gap:28px}
+  .avatar-wrap{display:flex;justify-content:center}
+  .avatar{width:90px;height:90px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff;letter-spacing:1px;border:3px solid rgba(255,255,255,.2)}
+  .s-name{text-align:center}
+  .s-name h1{font-family:'Playfair Display',serif;font-size:20px;line-height:1.3;color:#fff}
+  .s-name p{font-size:11px;color:#90a4b7;margin-top:4px;line-height:1.5}
+  .contact-list{display:flex;flex-direction:column;gap:8px}
+  .contact-item{display:flex;align-items:center;gap:8px;font-size:11.5px;color:#b0c4d8}
+  .contact-item .icon{width:20px;height:20px;background:var(--accent);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+  .contact-item a{color:#b0c4d8;text-decoration:none}
+  .contact-item a:hover{color:#fff}
+  .s-section-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:6px;margin-bottom:12px}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .skill-tag{background:rgba(46,110,142,.25);border:1px solid rgba(46,110,142,.4);color:#a8d4e8;font-size:10px;padding:2px 7px;border-radius:3px}
+  .lang-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .lang-name{font-size:12px;color:#e2e8f0;font-weight:500}
+  .lang-level{font-size:10px;color:#90a4b7;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:10px}
+
+  /* MAIN */
+  .main{padding:36px 36px 36px 32px;display:flex;flex-direction:column;gap:28px}
+  .profile-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:10px}
+  .profile-box{background:var(--accent-light);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 6px 6px 0;font-size:12px;line-height:1.7;color:var(--mid)}
+
+  .section-header{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+  .section-icon{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;flex-shrink:0}
+  .section-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dark)}
+  .section-line{flex:1;height:1px;background:var(--border)}
+
+  /* ACCORDION */
+  .accordion{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px}
+  .accordion:last-child{margin-bottom:0}
+  .acc-trigger{width:100%;background:none;border:none;cursor:pointer;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;text-align:left;transition:background .2s}
+  .acc-trigger:hover{background:var(--accent-light)}
+  .acc-trigger.open{background:var(--accent-light)}
+  .acc-left{display:flex;flex-direction:column;gap:3px}
+  .acc-role{font-size:13px;font-weight:700;color:var(--dark)}
+  .acc-org{font-size:11.5px;color:var(--accent);font-weight:600}
+  .acc-meta{display:flex;align-items:center;gap:8px;margin-top:2px}
+  .acc-date{font-size:10.5px;color:#718096;background:var(--light);border:1px solid var(--border);padding:2px 8px;border-radius:10px;white-space:nowrap}
+  .acc-chevron{font-size:12px;color:var(--accent);transition:transform .25s;flex-shrink:0;margin-left:8px}
+  .acc-trigger.open .acc-chevron{transform:rotate(180deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s ease}
+  .acc-body.open{max-height:600px}
+  .acc-inner{padding:0 14px 14px;border-top:1px dashed var(--border)}
+
+  .exp-bullets{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:10px}
+  .exp-bullets li{font-size:11.5px;color:var(--mid);line-height:1.6;position:relative;padding-left:14px}
+  .exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:9px;top:3px}
+
+  .edu-modules{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+  .edu-module{background:#F0FFF4;color:#276749;font-size:10px;padding:2px 7px;border-radius:3px;border:1px solid #C6F6D5}
+
+  /* Projects */
+  .proj-item{background:var(--light);border-radius:8px;padding:12px 14px;margin-bottom:10px;border:1px solid var(--border)}
+  .proj-item:last-child{margin-bottom:0}
+  .proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+  .proj-title{font-size:12px;font-weight:700;color:var(--dark)}
+  .proj-link{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--accent);text-decoration:none;font-weight:600;background:var(--accent-light);padding:3px 9px;border-radius:10px;border:1px solid #bee3f8;white-space:nowrap;flex-shrink:0;transition:background .15s}
+  .proj-link:hover{background:#bee3f8}
+  .proj-desc{font-size:11.5px;color:var(--mid);margin-top:6px;line-height:1.6}
+  .proj-tools{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+  .proj-tool{background:var(--tag-bg);color:var(--tag-text);font-size:10px;padding:2px 7px;border-radius:3px;font-weight:500}
+
+  @media print{body{background:#fff;padding:0}.page{box-shadow:none;max-width:100%}.acc-body{max-height:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="avatar-wrap"><div class="avatar">GN</div></div>
+    <div class="s-name">
+      <h1>Garbhit Naik</h1>
+      <p>Urban Planner · GIS Specialist · Architectural Designer</p>
+    </div>
+
+    <div>
+      <div class="s-section-title">Contact</div>
+      <div class="contact-list">
+        <div class="contact-item"><div class="icon">📍</div> Enschede, Netherlands</div>
+        <div class="contact-item"><div class="icon">✉️</div> <a href="mailto:garbhitnaik@gmail.com">garbhitnaik@gmail.com</a></div>
+        <div class="contact-item"><div class="icon">📞</div> +31 633 243 842</div>
+        <div class="contact-item"><div class="icon">🔗</div> <a href="https://www.linkedin.com/in/garbhitnaik" target="_blank">linkedin.com/in/garbhitnaik</a></div>
+        <div class="contact-item"><div class="icon">📁</div> <a href="https://drive.google.com/file/d/1ltlur-9KhBiB6dfS1vcJoQhhxt7gM_7f/view?usp=drive_link" target="_blank">View Portfolio</a></div>
+      </div>
+    </div>
+
+    <div><div class="s-section-title">Urban & Landscape Planning</div><div class="skill-tags"><span class="skill-tag">Climate Adaptation</span><span class="skill-tag">Water Sensitive Urban Design</span><span class="skill-tag">Ecological Planning</span><span class="skill-tag">Flood Risk</span><span class="skill-tag">Urban Form Analysis</span></div></div>
+    <div><div class="s-section-title">Spatial Analysis & GIS</div><div class="skill-tags"><span class="skill-tag">SMCE</span><span class="skill-tag">Network Analysis</span><span class="skill-tag">Suitability Analysis</span><span class="skill-tag">Spatial Statistics</span><span class="skill-tag">Spatial Clustering</span><span class="skill-tag">Geodata Visualisation</span><span class="skill-tag">Web Development Basics</span></div></div>
+    <div><div class="s-section-title">Programming Tools</div><div class="skill-tags"><span class="skill-tag">QGIS</span><span class="skill-tag">ArcGIS</span><span class="skill-tag">SPSS</span><span class="skill-tag">Python</span><span class="skill-tag">Google Earth Engine</span></div></div>
+    <div><div class="s-section-title">Remote Sensing</div><div class="skill-tags"><span class="skill-tag">LULC Classification</span><span class="skill-tag">Change Detection</span><span class="skill-tag">Image Segmentation</span></div></div>
+    <div><div class="s-section-title">Design Tools</div><div class="skill-tags"><span class="skill-tag">AutoCAD</span><span class="skill-tag">SketchUp</span><span class="skill-tag">Illustrator</span><span class="skill-tag">Photoshop</span><span class="skill-tag">InDesign</span></div></div>
+
+    <div>
+      <div class="s-section-title">Recent Awards</div>
+      <div style="font-size:11px;color:#b0c4d8;line-height:1.6">
+        🏆 <span style="color:#e2e8f0;font-weight:600">Top 5 – Witteveen+Bos Best MSc Thesis Award</span><br>
+        <span style="color:#90a4b7;font-size:10.5px">Social Design · Nov 2025</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="s-section-title">Recent Publication</div>
+      <div style="font-size:10.5px;color:#b0c4d8;line-height:1.7">
+        <span style="color:#a8d4e8;font-weight:600">Journal Paper</span><br>
+        Naik, G.; Rai, R.B.; Gupta, N. (2025). Regional Socio-Ecological Impacts of Wastewater Reuse in Peri-Urban Areas: A Case Study of Chandlai, Rajasthan. <span style="color:#90a4b7;font-style:italic">Institute of Town Planners, India Journal,</span> 22(1), 94–104. ISSN: 0537-9679.
+      </div>
+    </div>
+
+    <div>
+      <div class="s-section-title">Languages</div>
+      <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+      <div class="lang-item"><span class="lang-name">Hindi</span><span class="lang-level">Native</span></div>
+      <div class="lang-item"><span class="lang-name">Dutch</span><span class="lang-level">Elementary</span></div>
+      <div class="lang-item"><span class="lang-name">Urdu</span><span class="lang-level">Elementary</span></div>
+      <div class="lang-item"><span class="lang-name">Nepali</span><span class="lang-level">Elementary</span></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Profile -->
+    <div class="header-block">
+      <div class="profile-label">Profile</div>
+      <div class="profile-box">
+        Urban planning and GIS professional with experience in spatial analysis, climate adaptation planning, and participatory landscape development. Skilled in integrating geospatial analysis, environmental planning, and design thinking to support sustainable urban development. Experienced in multidisciplinary and international projects addressing urban resilience, spatial inequality, and landscape restoration.
+      </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">💼</div>
+        <div class="section-title">Work Experience</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger open" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Teaching Assistant</div>
+            <div class="acc-org">University of Twente — Netherlands</div>
+            <div class="acc-meta"><span class="acc-date">Jul 2025 – Nov 2025</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="acc-inner">
+            <ul class="exp-bullets">
+              <li>Developed MOOC course material on Holistic Decision Making for Disaster Resilience, integrating spatial decision support systems and climate adaptation planning.</li>
+              <li>Produced instructional modules on GIS-based planning tools and multi-criteria evaluation for climate-resilient urban development.</li>
+              <li>Designed training material linking spatial analysis research with planning practice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Research Intern</div>
+            <div class="acc-org">WPDER Foundation — UK</div>
+            <div class="acc-meta"><span class="acc-date">Jan 2025 – Mar 2025</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <ul class="exp-bullets">
+              <li>Assessed water insecurity and environmental risk in mountain communities of western Nepal using spatial research methods.</li>
+              <li>Developed a Water Anxiety Index combining household surveys (n=248) with GIS-based spatial analysis and regression modelling.</li>
+              <li>Produced spatial vulnerability maps to support water-sensitive planning strategies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Project Manager</div>
+            <div class="acc-org">Prakruti Prerana Foundation — India</div>
+            <div class="acc-meta"><span class="acc-date">Jan 2022 – Jul 2023</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <ul class="exp-bullets">
+              <li>Led landscape restoration planning across 43 peri-urban settlements using remote sensing and GIS analysis.</li>
+              <li>Facilitated participatory planning workshops with local communities, NGOs and government stakeholders.</li>
+              <li>Implemented participatory GIS workflows for environmental mapping and landscape planning.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Junior Designer</div>
+            <div class="acc-org">CAD Consultants & Services — India</div>
+            <div class="acc-meta"><span class="acc-date">Jun 2019 – Nov 2020</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <ul class="exp-bullets">
+              <li>Designed riverfront development plans integrating environmental sensitivity analysis and spatial suitability modelling.</li>
+              <li>Conducted road infrastructure mapping and network analysis using Google Earth Pro and QGIS.</li>
+              <li>Delivered GIS-based spatial analysis supporting urban infrastructure planning decisions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Projects -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🗺️</div>
+        <div class="section-title">Recent Projects</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-header">
+          <div class="proj-title">Urban Inequality Mapping — Enschede, Netherlands</div>
+          <a class="proj-link" href="https://drive.google.com/file/d/1ANqntQpXHYur3N0w6DhnQeLnsUUPAD87/view?usp=drive_link" target="_blank">📄 View Report</a>
+        </div>
+        <div class="proj-desc">Computed a Multiple Deprivation Index across 71 neighbourhoods using spatial indicators (income, housing affordability, healthcare access, unemployment, urbanity) to enable spatial identification of social inequality.</div>
+        <div class="proj-tools"><span class="proj-tool">QGIS</span><span class="proj-tool">Spatial Normalisation</span><span class="proj-tool">Statistical Correlation</span></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-header">
+          <div class="proj-title">Urban Form Analysis — Arequipa, Peru</div>
+          <a class="proj-link" href="https://drive.google.com/file/d/1zZN10psCGDKBbV24D7FFHgHpJux6WUIV/view?usp=drive_link" target="_blank">📄 View Report</a>
+        </div>
+        <div class="proj-desc">Quantified urban growth patterns using spatial landscape metrics (Number of Patches, Patch Cohesion Index, Mean Patch Shape Ratio) to evaluate urban sprawl and compactness.</div>
+        <div class="proj-tools"><span class="proj-tool">QGIS</span><span class="proj-tool">LecoS</span><span class="proj-tool">Spatial Metrics Analysis</span></div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-header">
+          <div class="proj-title">Integrated Flood Risk Assessment — Kampala</div>
+          <a class="proj-link" href="https://drive.google.com/file/d/1_lR32YMbe_D8KoOZ8XFk3yxkdp1v7Krr/view?usp=drive_link" target="_blank">📄 View Report</a>
+        </div>
+        <div class="proj-desc">Performed spatial multi-criteria analysis combining flood hazard exposure, physical vulnerability, and social vulnerability to map urban flood risk scenarios.</div>
+        <div class="proj-tools"><span class="proj-tool">GIS</span><span class="proj-tool">SMCA</span><span class="proj-tool">Scenario Planning</span></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🎓</div>
+        <div class="section-title">Education</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger open" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">MSc Geo-Information Science & Earth Observation</div>
+            <div class="acc-org">University of Twente — Netherlands</div>
+            <div class="acc-meta"><span class="acc-date">Aug 2023 – Jul 2025</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="acc-inner">
+            <div class="edu-modules">
+              <span class="edu-module">Spatial Multi-Criteria Evaluation</span>
+              <span class="edu-module">Remote Sensing Image Processing</span>
+              <span class="edu-module">Urban Spatial Analytics</span>
+              <span class="edu-module">Disaster Risk & Climate Adaptation</span>
+              <span class="edu-module">Python for Geospatial Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Master of Architecture (M.Arch) – Sustainable Architecture</div>
+            <div class="acc-org">Central University of Rajasthan — India</div>
+            <div class="acc-meta"><span class="acc-date">Nov 2020 – Jun 2022</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="edu-modules">
+              <span class="edu-module">Sustainable Neighbourhood Planning & Urban Design</span>
+              <span class="edu-module">Water Management & Environmental Systems</span>
+              <span class="edu-module">Energy Efficient Building Design & Simulation</span>
+              <span class="edu-module">Climatology & Building Physics</span>
+              <span class="edu-module">Green Building Certification</span>
+              <span class="edu-module">Ecology & Environmental Management</span>
+              <span class="edu-module">Sustainable Architecture Design Studios</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="acc-trigger" onclick="toggle(this)">
+          <div class="acc-left">
+            <div class="acc-role">Bachelor of Architecture (B.Arch)</div>
+            <div class="acc-org">Gujarat University — India</div>
+            <div class="acc-meta"><span class="acc-date">Aug 2014 – Apr 2019</span></div>
+          </div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="edu-modules">
+              <span class="edu-module">Architectural Design Studios</span>
+              <span class="edu-module">Urban Design & Landscape Planning</span>
+              <span class="edu-module">Environmental Planning & Site Analysis</span>
+              <span class="edu-module">Climate Responsive Architecture</span>
+              <span class="edu-module">Building Construction & Materials</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggle(btn) {
+    var body = btn.nextElementSibling;
+    var isOpen = btn.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    body.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
